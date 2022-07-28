@@ -6,7 +6,7 @@ class GroupServices::Group_exists
   end
 
   def call
-    return Group.where(gno: @gno).present?
+    return Group_repository.new(@gno).g_exists
   end
 
 end

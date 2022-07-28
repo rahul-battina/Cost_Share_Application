@@ -12,7 +12,22 @@ class UserServices::Add_user
   end
 
   def call
-    newuser = User.new(uname: @uname, gno: @gno, email:@email, phno:@phno)
-    newuser.save
+
+    group_exists = GroupServices::Group_exists.new(gno:@gno)
+
+    if (group_exists == false )
+      return false
+
+    else
+      User_repository.new(@uname,@gno,@email,@phno).aduser
+      # User.new(uname: @uname, gno: @gno, email:@email, phno:@phno)
+
+
+      return true
+    end
+
+
+
+
   end
 end

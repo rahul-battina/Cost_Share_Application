@@ -8,6 +8,7 @@ class TransactionServices::Transaction_exists
   end
 
   def call
-    return Transaction.where(us1: @us1, us2: @us2).present?
+    return Tran_exists.new(@us1, @us2).tran_exists
+
   end
 end

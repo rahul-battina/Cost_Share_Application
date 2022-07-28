@@ -6,8 +6,18 @@ class GroupServices::Add_group
   end
 
   def call
-    gro = Group.new(gno: @gno)
-    gro.save
+    group_exists = GroupServices::Group_exists.new(@gno)
+
+    if (group_exists == true )
+      return false
+
+    else
+
+      Group_repository.new(@gno).adgroup
+
+
+      return true
+    end
   end
 
 end

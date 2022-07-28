@@ -10,9 +10,12 @@ class TransactionServices::Update_tran
   end
 
   def call
-    updated = Transaction.where(us1: @us1, us2: @us2)
-    updated.total += total
-    updated.save
+    # updated = Transaction.where(us1: @us1, us2: @us2)
+    # updated.total += total
+    # updated.save
+    #
+
+
   end
 
 

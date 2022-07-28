@@ -6,13 +6,22 @@ class GroupController < ApplicationController
   end
 
   def addGroup
-    group_exists = GroupServices::Group_exists.new(params[:gno])
-    if(group_exists == true)
+
+    added = GroupServices::Add_group.new(params[:gno]).call
+
+    if(added == false )
       render json: "Group number already present"
+
     else
-      GroupServices::Add_group.new(params[:gno]).call
       render json: "Group added"
     end
+    # group_exists = GroupServices::Group_exists.new(params[:gno])
+    # if(group_exists == true)
+    #   render json: "Group number already present"
+    # else
+    #   GroupServices::Add_group.new(params[:gno]).call
+    #   render json: "Group added"
+    # end
 
   end
 end
