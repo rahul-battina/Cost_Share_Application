@@ -36,11 +36,11 @@ class TransactionServices::Add_new_tran
             mem_present = TransactionServices::Transaction_exists.new(item.id, payer).call
 
             if (mem_present == false )
-              Transaction_repository.new(item.id, payer, total).adtran
+              Transaction_repository.new(item.id, payer, amo).adtran
               #TransactionServices::Add_new_tran.new(item.id, payer, total).call
             else
               balance = Transaction_repository.new(item.id, payer, total).gettran
-              balance+= amo
+              balance += amo
               return Transaction_repository.new(item.id, payer, balance).uptran
               #TransactionServices::Update_tran(item.id, payer, amo).call
 
